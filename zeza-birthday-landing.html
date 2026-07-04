@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Zeza</title>
+  <meta name="description" content="A birthday gift and discovery page for Zeza.co.za." />
+  <style>
+    :root {
+      --bg: #fff8f3;
+      --bg-2: #f6efe9;
+      --ink: #241f1b;
+      --muted: #6f625b;
+      --card: rgba(255,255,255,0.82);
+      --line: rgba(36,31,27,0.12);
+      --accent: #b86b5d;
+      --accent-2: #8f4c68;
+      --gold: #c79b50;
+      --shadow: 0 24px 70px rgba(54, 36, 28, 0.16);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184,107,93,0.18), transparent 36%),
+        radial-gradient(circle at 80% 5%, rgba(143,76,104,0.14), transparent 30%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 1.2rem;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(143,76,104,0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.48);
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
+      padding: 48px 0 72px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(199,155,80,0.45);
+      background: rgba(255,255,255,0.58);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #6b4a19;
+      font-weight: 700;
+      font-size: 0.88rem;
+      width: fit-content;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(3.2rem, 9vw, 7.8rem);
+      line-height: 0.89;
+      letter-spacing: -0.09em;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(120deg, var(--ink), var(--accent-2), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      font-size: 0.98rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 36px rgba(143,76,104,0.25);
+    }
+
+    .btn-secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+    }
+
+    .gift-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .gift-card:before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: rgba(184,107,93,0.14);
+      right: -70px;
+      top: -80px;
+    }
+
+    .gift-card h2 {
+      position: relative;
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .gift-card p {
+      position: relative;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .gift-lines {
+      position: relative;
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .gift-line {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.62);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    h2.section-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.96;
+      margin: 0;
+      letter-spacing: -0.07em;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.66);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 14px 35px rgba(54,36,28,0.08);
+    }
+
+    .card strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .form-shell {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: clamp(20px, 4vw, 36px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 800;
+      font-size: 0.94rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      padding: 13px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(143,76,104,0.62);
+      box-shadow: 0 0 0 4px rgba(143,76,104,0.1);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin: 0;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .check {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 11px;
+      background: rgba(255,255,255,0.58);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .check input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--accent-2);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      align-items: center;
+    }
+
+    .notice {
+      background: rgba(199,155,80,0.13);
+      border: 1px solid rgba(199,155,80,0.35);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: #6b4a19;
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    .output {
+      display: none;
+      margin-top: 24px;
+      border: 1px solid rgba(143,76,104,0.25);
+      background: rgba(255,255,255,0.78);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .output h3 {
+      margin: 0 0 10px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88rem;
+    }
+
+    .footer {
+      padding: 42px 0 56px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      background: #211b17;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      z-index: 99;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.22);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 880px) {
+      .hero, .section-header {
+        grid-template-columns: 1fr;
+      }
+      .cards, .form-grid, .checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media print {
+      .nav, .hero-actions, .form-actions, .footer, .toast {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+      }
+      .gift-card, .form-shell, .card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-mark">Z</div>
+        <div>Zeza.co.za</div>
+      </div>
+      <div class="nav-links">
+        <a href="#gift">Birthday Gift</a>
+        <a href="#future">The Future</a>
+        <a href="#form">Complete the Form</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" id="gift">
+        <div>
+          <div class="pill">A birthday gift with a future</div>
+          <h1>Happy Birthday, <span>Zeza.</span></h1>
+          <p class="lead">
+            This little corner of the internet was created just for you. Not only as a birthday message, but as a digital space that can become yours: personal, useful, memorable, and potentially profitable.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#form">Open your gift</a>
+            <a class="btn btn-secondary" href="#future">See what this can become</a>
+          </div>
+        </div>
+
+        <aside class="gift-card" aria-label="Birthday message">
+          <h2>This domain belongs to your next chapter.</h2>
+          <p>
+            Zeza.co.za can become a personal brand, business platform, booking page, portfolio, shop, community, content hub, or something entirely new.
+          </p>
+          <div class="gift-lines">
+            <div class="gift-line">A place for your story.</div>
+            <div class="gift-line">A place for your ideas.</div>
+            <div class="gift-line">A place that can turn attention into opportunity.</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="future">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">The strategic part</p>
+            <h2 class="section-title">What should Zeza.co.za become?</h2>
+          </div>
+          <p class="section-copy">
+            The form below is designed to collect the information needed to decide how this domain should be used and how it can generate income. It focuses on vision, audience, offers, pricing, content, channels, and practical next steps.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <strong>Personal brand</strong>
+            <p>Use the site as a professional profile, media kit, portfolio, blog, speaking page, or public identity hub.</p>
+          </div>
+          <div class="card">
+            <strong>Lead generation</strong>
+            <p>Use the site to collect enquiries for services, bookings, consultations, events, property, training, or partnerships.</p>
+          </div>
+          <div class="card">
+            <strong>Revenue platform</strong>
+            <p>Use the site to sell products, digital downloads, courses, subscriptions, sponsorships, affiliate offers, or paid services.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="form">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Discovery form</p>
+            <h2 class="section-title">Help shape Zeza.co.za.</h2>
+          </div>
+          <p class="section-copy">
+            Complete this honestly. There are no wrong answers. The goal is to understand what the domain should become, what feels authentic, and what could realistically make money.
+          </p>
+        </div>
+
+        <div class="form-shell">
+          <form id="zezaForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="fullName">Your full name</label>
+                <input id="fullName" name="Full name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Best email address</label>
+                <input id="email" name="Email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Best WhatsApp / phone number</label>
+                <input id="phone" name="Phone" type="tel" autocomplete="tel" />
+              </div>
+
+              <div class="field">
+                <label for="birthdayWish">How does this birthday gift make you feel?</label>
+                <select id="birthdayWish" name="Birthday gift reaction">
+                  <option value="">Select one</option>
+                  <option>Surprised</option>
+                  <option>Excited</option>
+                  <option>Curious</option>
+                  <option>Emotional</option>
+                  <option>Ready to build something with it</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="meaning">What does “Zeza” mean to you?</label>
+                <textarea id="meaning" name="What Zeza means" placeholder="A name, identity, nickname, brand idea, feeling, memory, or something else..."></textarea>
+              </div>
+
+              <div class="field full">
+                <label>What should Zeza.co.za be used for?</label>
+                <p class="hint">Select everything that feels relevant.</p>
+                <div class="checkbox-grid" data-group="Use cases">
+                  <label class="check"><input type="checkbox" value="Personal brand" /> Personal brand</label>
+                  <label class="check"><input type="checkbox" value="Portfolio / CV" /> Portfolio / CV</label>
+                  <label class="check"><input type="checkbox" value="Business website" /> Business website</label>
+                  <label class="check"><input type="checkbox" value="Blog / content hub" /> Blog / content hub</label>
+                  <label class="check"><input type="checkbox" value="Online shop" /> Online shop</label>
+                  <label class="check"><input type="checkbox" value="Booking page" /> Booking page</label>
+                  <label class="check"><input type="checkbox" value="Course / coaching platform" /> Course / coaching</label>
+                  <label class="check"><input type="checkbox" value="Community / membership" /> Community / membership</label>
+                  <label class="check"><input type="checkbox" value="Property / real estate" /> Property / real estate</label>
+                  <label class="check"><input type="checkbox" value="Events" /> Events</label>
+                  <label class="check"><input type="checkbox" value="Non-profit / cause" /> Non-profit / cause</label>
+                  <label class="check"><input type="checkbox" value="Not sure yet" /> Not sure yet</label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label for="vision">Describe the dream version of Zeza.co.za</label>
+                <textarea id="vision" name="Dream version" placeholder="If this worked beautifully, what would people see, do, feel, buy, book, or remember?"></textarea>
+              </div>
+
+              <div class="field">
+                <label for="audience">Who should this site serve?</label>
+                <input id="audience" name="Target audience" type="text" placeholder="Example: women entrepreneurs, students, property buyers, beauty clients, families..." />
+              </div>
+
+              <div class="field">
+                <label for="location">Primary market / location</label>
+                <input id="location" name="Primary market" type="text" placeholder="Example: South Africa, Johannesburg, online, global..." />
+              </div>
+
+              <div class="field full">
+                <label for="problem">What problem, need, desire, or opportunity could Zeza.co.za solve?</label>
+                <textarea id="problem" name="Problem or opportunity"></textarea>
+              </div>
+
+              <div class="field full">
+                <label>How could Zeza.co.za make money?</label>
+                <p class="hint">Select all possible revenue models.</p>
+                <div class="checkbox-grid" data-group="Revenue models">
+                  <label class="check"><input type="checkbox" value="Selling services" /> Selling services</label>
+                  <label class="check"><input type="checkbox" value="Consulting / coaching" /> Consulting / coaching</label>
+                  <label class="check"><input type="checkbox" value="Bookings / appointments" /> Bookings</label>
+                  <label class="check"><input type="checkbox" value="Digital products" /> Digital products</label>
+                  <label class="check"><input type="checkbox" value="Physical products" /> Physical products</label>
+                  <label class="check"><input type="checkbox" value="Courses / workshops" /> Courses / workshops</label>
+                  <label class="check"><input type="checkbox" value="Membership / subscription" /> Membership</label>
+                  <label class="check"><input type="checkbox" value="Affiliate income" /> Affiliate income</label>
+                  <label class="check"><input type="checkbox" value="Advertising / sponsorship" /> Ads / sponsorship</label>
+                  <label class="check"><input type="checkbox" value="Lead generation" /> Lead generation</label>
+                  <label class="check"><input type="checkbox" value="Donations / fundraising" /> Donations</label>
+                  <label class="check"><input type="checkbox" value="Not sure yet" /> Not sure yet</label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label for="offers">What could be sold first?</label>
+                <textarea id="offers" name="First offers" placeholder="List 1-5 possible products, services, packages, bookings, downloads, or ideas."></textarea>
+              </div>
+
+              <div class="field">
+                <label for="price">Possible price points</label>
+                <input id="price" name="Possible price points" type="text" placeholder="Example: R250, R750, R1,500, R5,000..." />
+              </div>
+
+              <div class="field">
+                <label for="timeline">How soon should this go live as a real business asset?</label>
+                <select id="timeline" name="Timeline">
+                  <option value="">Select one</option>
+                  <option>Immediately</option>
+                  <option>Within 7 days</option>
+                  <option>Within 30 days</option>
+                  <option>Within 90 days</option>
+                  <option>Only after we plan it properly</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="content">What content should appear on the site?</label>
+                <textarea id="content" name="Content ideas" placeholder="Photos, videos, story, bio, services, products, testimonials, social links, booking calendar, blog topics..."></textarea>
+              </div>
+
+              <div class="field">
+                <label for="socials">Social media links or handles</label>
+                <input id="socials" name="Social links" type="text" placeholder="Instagram, TikTok, Facebook, LinkedIn, YouTube..." />
+              </div>
+
+              <div class="field">
+                <label for="style">Preferred visual style</label>
+                <select id="style" name="Preferred style">
+                  <option value="">Select one</option>
+                  <option>Elegant and premium</option>
+                  <option>Soft and feminine</option>
+                  <option>Bold and modern</option>
+                  <option>Minimal and clean</option>
+                  <option>Playful and creative</option>
+                  <option>Corporate and professional</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="mustHave">What must the site definitely include?</label>
+                <textarea id="mustHave" name="Must-have features" placeholder="Contact form, WhatsApp button, shop, booking calendar, gallery, payment links, blog, newsletter, etc."></textarea>
+              </div>
+
+              <div class="field full">
+                <label for="concerns">Any concerns, boundaries, or things you do not want online?</label>
+                <textarea id="concerns" name="Concerns and boundaries"></textarea>
+              </div>
+
+              <div class="field full">
+                <label class="check">
+                  <input type="checkbox" id="consent" required />
+                  I consent to sharing this information so Zeza.co.za can be planned, developed, and used for the purpose I choose.
+                </label>
+              </div>
+            </div>
+
+            <div class="notice">
+              After submitting, this page will create a structured summary. She can copy it, download it, or email it directly.
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Create my Zeza plan</button>
+              <button class="btn btn-secondary" type="button" id="copyBtn">Copy summary</button>
+              <button class="btn btn-secondary" type="button" id="downloadBtn">Download answers</button>
+              <button class="btn btn-secondary" type="button" id="emailBtn">Email Raydo</button>
+              <button class="btn btn-secondary" type="reset">Clear form</button>
+            </div>
+          </form>
+
+          <div class="output" id="output">
+            <h3>Zeza.co.za Discovery Summary</h3>
+            <pre id="summaryText"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Created for Zeza with love and intention.</div>
+      <div>Zeza.co.za · Birthday gift · Future brand asset</div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Done</div>
+
+  <script>
+    const EMAIL_TO = "raydo@skunkworks.africa";
+
+    const form = document.getElementById("zezaForm");
+    const output = document.getElementById("output");
+    const summaryText = document.getElementById("summaryText");
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function getCheckboxGroup(groupName) {
+      const group = document.querySelector(`[data-group="${groupName}"]`);
+      if (!group) return "";
+      return Array.from(group.querySelectorAll("input[type='checkbox']:checked"))
+        .map(input => input.value)
+        .join(", ");
+    }
+
+    function getFormData() {
+      const fields = Array.from(form.querySelectorAll("input, select, textarea"))
+        .filter(field => field.name && field.type !== "checkbox")
+        .map(field => [field.name, field.value.trim()]);
+
+      const data = Object.fromEntries(fields);
+      data["Use cases"] = getCheckboxGroup("Use cases");
+      data["Revenue models"] = getCheckboxGroup("Revenue models");
+      data["Consent"] = document.getElementById("consent").checked ? "Yes" : "No";
+      data["Submitted at"] = new Date().toLocaleString();
+
+      return data;
+    }
+
+    function buildSummary(data) {
+      return `ZEZA.CO.ZA DISCOVERY SUMMARY
+
+PERSONAL DETAILS
+Full name: ${data["Full name"] || "-"}
+Email: ${data["Email"] || "-"}
+Phone: ${data["Phone"] || "-"}
+Birthday gift reaction: ${data["Birthday gift reaction"] || "-"}
+
+MEANING AND VISION
+What Zeza means:
+${data["What Zeza means"] || "-"}
+
+Dream version:
+${data["Dream version"] || "-"}
+
+Preferred site use cases:
+${data["Use cases"] || "-"}
+
+AUDIENCE AND MARKET
+Target audience: ${data["Target audience"] || "-"}
+Primary market: ${data["Primary market"] || "-"}
+
+Problem, need, desire, or opportunity:
+${data["Problem or opportunity"] || "-"}
+
+MONETISATION
+Possible revenue models:
+${data["Revenue models"] || "-"}
+
+First offers:
+${data["First offers"] || "-"}
+
+Possible price points:
+${data["Possible price points"] || "-"}
+
+Timeline:
+${data["Timeline"] || "-"}
+
+CONTENT AND BRAND
+Content ideas:
+${data["Content ideas"] || "-"}
+
+Social links:
+${data["Social links"] || "-"}
+
+Preferred style:
+${data["Preferred style"] || "-"}
+
+Must-have features:
+${data["Must-have features"] || "-"}
+
+Concerns and boundaries:
+${data["Concerns and boundaries"] || "-"}
+
+Consent: ${data["Consent"]}
+Submitted at: ${data["Submitted at"]}`;
+    }
+
+    function updateSummary() {
+      const data = getFormData();
+      const summary = buildSummary(data);
+      summaryText.textContent = summary;
+      output.style.display = "block";
+      output.scrollIntoView({ behavior: "smooth", block: "start" });
+      return summary;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      updateSummary();
+      showToast("Summary created");
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const summary = summaryText.textContent || updateSummary();
+      await navigator.clipboard.writeText(summary);
+      showToast("Summary copied");
+    });
+
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const summary = summaryText.textContent || updateSummary();
+      const blob = new Blob([summary], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "zeza-co-za-discovery-summary.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast("Answers downloaded");
+    });
+
+    document.getElementById("emailBtn").addEventListener("click", () => {
+      const summary = summaryText.textContent || updateSummary();
+      const subject = encodeURIComponent("Zeza.co.za Discovery Summary");
+      const body = encodeURIComponent(summary);
+      window.location.href = `mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
