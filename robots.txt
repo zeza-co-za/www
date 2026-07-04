@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zeza.co.za/sitemap.xml
