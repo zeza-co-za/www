@@ -1,0 +1,12 @@
+{
+  "name": "Zeza.co.za",
+  "short_name": "Zeza",
+  "description": "Digital skills, AI tools, affiliate marketing, coaching, and community for beginners.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8f2",
+  "theme_color": "#7c2d45",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
