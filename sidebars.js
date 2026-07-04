@@ -107,6 +107,9 @@ const sidebars = {
       link: {type: 'generated-index', title: 'Implementation and QA', description: 'Routing, build, PDF, QA and reference documentation.'},
       collapsed: true,
       items: [
+        'docusaurus-migration',
+        'docusaurus-docs-checklist',
+        'lovable-docusaurus-docs-prompt',
         'clickable-card-asset-system',
         'merge-notes',
         'pdf-upload-note',
