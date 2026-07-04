@@ -109,6 +109,7 @@ const sidebars = {
       items: [
         'docusaurus-migration',
         'docusaurus-docs-checklist',
+        'docusaurus-frontmatter-standard',
         'lovable-docusaurus-docs-prompt',
         'clickable-card-asset-system',
         'merge-notes',
