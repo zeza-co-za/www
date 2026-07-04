@@ -1,3 +1,10 @@
+---
+id: skool-community-integration
+title: Skool Community Integration
+description: Skool group CTA, YouTube training preview, Mux video embed and community waitlist implementation notes.
+sidebar_position: 1
+---
+
 # Skool Community Integration
 
 ## Community URL
@@ -15,6 +22,7 @@ The Zeza.co.za community section should direct visitors into the Dreamworx Life 
 The homepage community section includes:
 
 - A supportive community positioning block.
+- A responsive YouTube training preview embed.
 - A Mux player embed using Skool video playback.
 - A visible `JOIN GROUP` CTA that opens the Skool group in a new tab.
 - A fallback waiting-list form for visitors who are not ready to join immediately.
@@ -29,7 +37,24 @@ Use a full-width button styled consistently with the Zeza brand:
 </a>
 ```
 
-## Video embed
+## YouTube training preview embed
+
+The YouTube video supplied for the community section is documented in [YouTube Training Video Embed](./youtube-training-video-embed.md).
+
+```html
+<div class="responsive-embed">
+  <iframe
+    src="https://www.youtube.com/embed/v95Y2jijYNs?si=I1k07sYvugg7tDgK"
+    title="Zeza.co.za featured YouTube training video"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+## Skool / Mux video embed
 
 ```html
 <mux-player
@@ -51,3 +76,4 @@ Use a full-width button styled consistently with the Zeza brand:
 - Use `rel="noopener"` for security.
 - Keep the waitlist form as fallback capture.
 - Confirm that the Skool video playback policy allows embedding on the production domain.
+- Keep YouTube embeds responsive and avoid fixed-width iframe layouts.
