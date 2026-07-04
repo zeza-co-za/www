@@ -1,10 +1,19 @@
-name: Docusaurus Build
+name: Build and Deploy Zeza Site
 
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -23,3 +32,45 @@ jobs:
 
       - name: Build Docusaurus docs
         run: npm run build
+
+      - name: Assemble static site and docs artifact
+        run: |
+          set -euo pipefail
+          rm -rf public
+          mkdir -p public
+          rsync -a ./ public/ \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.docusaurus' \
+            --exclude='build' \
+            --exclude='docs' \
+            --exclude='src' \
+            --exclude='static' \
+            --exclude='docusaurus.config.js' \
+            --exclude='sidebars.js' \
+            --exclude='package.json' \
+            --exclude='package-lock.json'
+          mkdir -p public/docs
+          cp -R build/* public/docs/
+          touch public/.nojekyll
+          test -f public/index.html
+          test -f public/docs/index.html
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    if: github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
