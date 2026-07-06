@@ -1,7 +1,7 @@
 ---
 id: lovable-docusaurus-docs-prompt
 title: Lovable Docusaurus Docs Prompt
-description: Prompt for updating the Lovable demo to align with the Docusaurus documentation system.
+description: Prompt for updating the Lovable demo to align with the Docusaurus documentation and GitHub Pages deployment system.
 sidebar_position: 2
 ---
 
@@ -14,7 +14,7 @@ Update the Zeza.co.za demo documentation experience so `/docs/` behaves like a D
 
 Requirements:
 
-1. Replace the static docs landing page with a Docusaurus-inspired documentation hub.
+1. `/docs/` must be a well-designed documentation landing page, not the default GitHub Pages 404.
 2. Use a left sidebar or mobile drawer navigation.
 3. Group documentation into these categories:
    - Resource Assets
@@ -32,7 +32,7 @@ Requirements:
    - Skool Community Integration
    - Download Funnel Architecture
    - Measurement Plan
-   - Content Governance
+   - GitHub Pages Docusaurus Deployment
 6. Keep the Zeza brand style:
    - warm cream background
    - deep burgundy accents
@@ -40,7 +40,11 @@ Requirements:
    - subtle gold highlights
    - rounded cards
    - clean mobile layout
-7. Add a Docs link in the homepage nav and footer.
+7. Add a branded 404 fallback page with links to:
+   - Home
+   - Docs
+   - Resource Library
+   - GitHub docs source
 8. Preserve the Skool group CTA:
    https://www.skool.com/dreamworx-life-3717/about
 9. Keep all messaging honest, beginner-friendly and no-hype.

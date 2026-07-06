@@ -6,7 +6,7 @@ const config = {
   tagline: 'Digital skills, lead magnets, community and launch documentation',
   favicon: 'assets/favicon.svg',
   url: 'https://zeza.co.za',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   organizationName: 'zeza-co-za',
   projectName: 'www',
   trailingSlash: true,
@@ -23,7 +23,7 @@ const config = {
       ({
         docs: {
           path: 'docs',
-          routeBasePath: 'docs',
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/zeza-co-za/www/edit/main/',
           showLastUpdateAuthor: true,
@@ -57,9 +57,9 @@ const config = {
           src: 'assets/favicon.svg'
         },
         items: [
-          {to: '/', label: 'Main Site', position: 'left'},
+          {href: '/', label: 'Main Site', position: 'left'},
           {type: 'docSidebar', sidebarId: 'zezaDocs', position: 'left', label: 'Docs'},
-          {to: '/assets/pages/resource-library.html', label: 'Resource Library', position: 'left'},
+          {href: '/assets/pages/resource-library.html', label: 'Resource Library', position: 'left'},
           {href: 'https://www.skool.com/dreamworx-life-3717/about', label: 'Join Group', position: 'right'},
           {href: 'https://github.com/zeza-co-za/www/tree/main/docs', label: 'GitHub', position: 'right'}
         ]
@@ -70,16 +70,17 @@ const config = {
           {
             title: 'Docs',
             items: [
-              {label: 'Overview', to: '/docs/'},
-              {label: 'Resource Library', to: '/assets/pages/resource-library.html'},
-              {label: 'Lead Magnet Plan', to: '/docs/lead-magnet-implementation-plan'}
+              {label: 'Overview', to: '/'},
+              {label: 'Lead Magnet Plan', to: '/lead-magnet-implementation-plan'},
+              {label: 'Docusaurus Deployment', to: '/github-pages-docusaurus-deployment'}
             ]
           },
           {
-            title: 'Community',
+            title: 'Main Site',
             items: [
-              {label: 'Join Group', href: 'https://www.skool.com/dreamworx-life-3717/about'},
-              {label: 'Main Site', to: '/'}
+              {label: 'Homepage', href: '/'},
+              {label: 'Resource Library', href: '/assets/pages/resource-library.html'},
+              {label: 'Join Group', href: 'https://www.skool.com/dreamworx-life-3717/about'}
             ]
           },
           {

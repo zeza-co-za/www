@@ -12,30 +12,31 @@ The demo is designed for Maria to review and approve the brand direction, target
 
 - Mobile-first responsive landing page
 - Clickable resource, course, product, tool and article cards
-- SEO title, meta description, robots directives, canonical URL, Open Graph tags, and Twitter card tags
-- JSON-LD structured data for Organization, WebSite, starter offers, and FAQ
-- Free resources / lead magnet section
-- Training and course cards
-- Digital products shop demo
+- SEO and social metadata
+- Free resources and lead magnet section
 - Skool community CTA and waitlist fallback
-- Recommended tools / affiliate disclosure placeholder
+- Recommended tools and affiliate disclosure placeholder
 - Blog and resource centre topics
 - Discovery call form demo
-- Privacy Policy, Terms, and Disclaimer placeholders
-- `robots.txt`, `sitemap.xml`, `manifest.webmanifest`, `.nojekyll`
+- Privacy Policy, Terms and Disclaimer placeholders
+- Branded `404.html` fallback page
+- Static `/docs/index.html` fallback page
+- Docusaurus documentation under `/docs/`
 
 ## Docusaurus docs
 
-This repository now includes a Docusaurus documentation system for `/docs/`.
+This repository includes a Docusaurus documentation system that is deployed under `/docs/` while preserving the existing static homepage.
 
 ### Files
 
 - `package.json` — Docusaurus dependencies and scripts
-- `docusaurus.config.js` — Docusaurus site configuration
+- `docusaurus.config.js` — Docusaurus configuration mounted at `/docs/`
 - `sidebars.js` — explicit sidebar categories for all documentation groups
 - `src/css/custom.css` — Zeza-branded Docusaurus styling
-- `docs/overview.mdx` — `/docs/` landing page
-- `.github/workflows/docusaurus-build.yml` — build validation workflow
+- `docs/overview.mdx` — Docusaurus documentation landing page
+- `docs/index.html` — static fallback page if GitHub Pages serves source files directly
+- `docs/github-pages-docusaurus-deployment.md` — deployment architecture notes
+- `.github/workflows/docusaurus-build.yml` — GitHub Pages build and deploy workflow
 
 ### Commands
 
@@ -44,6 +45,16 @@ npm install
 npm run start
 npm run build
 ```
+
+### Deployment model
+
+The workflow builds Docusaurus, copies the existing static site into a `public/` artifact, then copies the Docusaurus build into `public/docs/`. This allows:
+
+- `/` to serve the Zeza.co.za static homepage.
+- `/docs/` to serve Docusaurus documentation.
+- `/docs/<document>/` to serve individual documentation pages.
+
+GitHub Pages should be configured to deploy from **GitHub Actions**.
 
 ## Compliance notes
 
@@ -54,9 +65,10 @@ Before production launch, replace placeholder legal pages with reviewed POPIA/GD
 ## Production next steps
 
 1. Confirm Maria's approval notes.
-2. Verify whether Docusaurus will be deployed as the full site or only the `/docs/` experience.
-3. Replace placeholder legal pages with reviewed policies.
-4. Connect forms to a backend such as Supabase, Netlify Forms, Formspree, HubSpot, or Microsoft Power Automate.
-5. Add analytics only after privacy approval.
-6. Add production product pages and payment flow.
-7. Submit the generated sitemap to Google Search Console.
+2. Set GitHub Pages deployment source to GitHub Actions.
+3. Confirm the Docusaurus `/docs/` deployment works after merging.
+4. Replace placeholder legal pages with reviewed policies.
+5. Connect forms to a backend such as Supabase, Netlify Forms, Formspree, HubSpot, or Microsoft Power Automate.
+6. Add analytics only after privacy approval.
+7. Add production product pages and payment flow.
+8. Submit the generated sitemap to Google Search Console.

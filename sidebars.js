@@ -63,10 +63,11 @@ const sidebars = {
     {
       type: 'category',
       label: 'Community and Skool',
-      link: {type: 'generated-index', title: 'Community and Skool', description: 'Community integration, Skool group CTA and related Lovable implementation notes.'},
+      link: {type: 'generated-index', title: 'Community and Skool', description: 'Community integration, Skool group CTA and video embed implementation notes.'},
       collapsed: true,
       items: [
         'skool-community-integration',
+        'youtube-training-video-embed',
         'lovable-skool-docs-update-prompt'
       ]
     },
@@ -104,9 +105,10 @@ const sidebars = {
     {
       type: 'category',
       label: 'Implementation and QA',
-      link: {type: 'generated-index', title: 'Implementation and QA', description: 'Routing, build, PDF, QA and reference documentation.'},
+      link: {type: 'generated-index', title: 'Implementation and QA', description: 'Routing, build, PDF, QA and deployment documentation.'},
       collapsed: true,
       items: [
+        'github-pages-docusaurus-deployment',
         'docusaurus-migration',
         'docusaurus-docs-checklist',
         'docusaurus-frontmatter-standard',
